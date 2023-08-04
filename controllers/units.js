@@ -3,7 +3,6 @@ import { db } from "../db.js";
 
 export const getUnits = (req, res) => {
     const qr = "SELECT * FROM units";
-
     db.query(qr, (err, data) => {
         if (err) return res.status(500).send(err);
         return res.status(200).json(data);

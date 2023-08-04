@@ -1,4 +1,3 @@
-//import { query } from "express";
 import { db } from "../db.js";
 
 // API get old price by product ID

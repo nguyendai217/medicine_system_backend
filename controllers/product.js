@@ -47,7 +47,7 @@ export const addProduct = (req, res) => {
 
     db.query(q, [values], (err, data) => {
         if (err) return res.status(500).json(err);
-        return res.status(201).json("Thêm mới sản phẩm thành công.");
+        return res.status(201).json("Thêm mới thành công.");
     });
 };
 
@@ -57,7 +57,7 @@ export const deleteProduct = (req, res) => {
 
     db.query(q, [productId], (err, data) => {
         if (err) return res.status(500).json(err);
-        return res.status(200).json("Xoá sản phẩm thành công.");
+        return res.status(200).json("Xoá dữ liệu thành công.");
     });
 };
 
@@ -76,7 +76,7 @@ export const updateProduct = (req, res) => {
 
     db.query(q, [...values, productId], (err, data) => {
         if (err) return res.status(500).json(err);
-        return res.status(200).json("Cập nhật sản phẩm thành công.");
+        return res.status(200).json("Cập nhật thành công.");
     });
 
 };

@@ -5,6 +5,7 @@ import postRoutes from "./routes/posts.js";
 import productsRoutes from "./routes/products.js";
 import unitsRoutes from "./routes/units.js";
 import customersRoutes from "./routes/customers.js";
+import oldPriceRoutes from "./routes/oldPrice.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import multer from "multer";
@@ -25,6 +26,7 @@ app.use("/api/posts", postRoutes);
 app.use("/api/products", productsRoutes);
 app.use("/api/units", unitsRoutes);
 app.use("/api/customers", customersRoutes);
+app.use("/api/old_price", oldPriceRoutes);
 
 var port = process.env.PORT_APP;
 

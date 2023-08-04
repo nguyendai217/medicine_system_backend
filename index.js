@@ -4,8 +4,9 @@ import userRoutes from "./routes/users.js";
 import postRoutes from "./routes/posts.js";
 import productsRoutes from "./routes/products.js";
 import unitsRoutes from "./routes/units.js";
+import customersRoutes from "./routes/customers.js";
 import cookieParser from "cookie-parser";
-import cors  from "cors";
+import cors from "cors";
 import multer from "multer";
 import dotenv from 'dotenv';
 dotenv.config()
@@ -17,6 +18,20 @@ app.use(cors({
   origin: '*',
   methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH']
 }));
+
+app.use("/api/auth", authRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/posts", postRoutes);
+app.use("/api/products", productsRoutes);
+app.use("/api/units", unitsRoutes);
+app.use("/api/customers", customersRoutes);
+
+var port = process.env.PORT_APP;
+
+app.listen(port, () => {
+  console.log("MyApp connected, running on port:", port);
+});
+
 // const storage = multer.diskStorage({
 //   destination: function (req, file, cb) {
 //     cb(null, "../client/public/upload");
@@ -33,12 +48,3 @@ app.use(cors({
 //   res.status(200).json(file.filename);
 // });
 
-app.use("/api/auth", authRoutes);
-app.use("/api/users", userRoutes);
-app.use("/api/posts", postRoutes);
-app.use("/api/products", productsRoutes);
-app.use("/api/units",unitsRoutes);
-
-app.listen(8080, () => {
-  console.log(" App connected !!!");
-});

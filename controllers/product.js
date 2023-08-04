@@ -11,7 +11,7 @@ export const getProducts = (req, res) => {
 };
 
 export const getProductById = (req, res) => {
-    const q = "SELECT p.id, p.product_code, p.product_name, p.description, u.unit_name FROM products p"
+    const q = "SELECT p.id, p.product_code, p.product_name, p.description, u.unit_name, p.unit_id FROM products p"
         + " JOIN units u ON p.unit_id = u.id AND p.id = ?";
 
     db.query(q, [req.params.id], (err, data) => {

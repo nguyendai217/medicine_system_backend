@@ -28,10 +28,10 @@ app.use("/api/units", unitsRoutes);
 app.use("/api/customers", customersRoutes);
 app.use("/api/old_price", oldPriceRoutes);
 
-var port = process.env.PORT_APP;
+var port = process.env.PORT_APP || 3000;
 
 app.listen(port, () => {
-  console.log("MyApp connected, running on port:", port);
+  console.log("MyApp connected, running on port", port);
 });
 
 // const storage = multer.diskStorage({

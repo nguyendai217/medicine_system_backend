@@ -12,7 +12,7 @@ export const db = mysql.createConnection({
 
 db.connect((err) => {
   if (err) {
-    console.log("Error occurred", err);
+    console.log("Error connect to MySQL Server", err);
   } else {
     console.log("MyApp Connected to MySQL Server");
   }

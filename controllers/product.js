@@ -24,11 +24,8 @@ export const getProductById = (req, res) => {
 export const getProductByProductCode = (req, res) => {
     const q = "SELECT p.id, p.product_code, p.product_name, p.description, u.unit_name FROM products p"
         + " JOIN units u ON p.unit_id = u.id AND p.product_code = ?";
-
-    console.log('product_code', req.params.productCode);
-    db.query(q, [req.params.productCode], (err, data) => {
+    db.query(q, [req.params.code], (err, data) => {
         if (err) return res.status(500).json(err);
-
         return res.status(200).json(data[0]);
     });
 };

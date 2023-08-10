@@ -9,3 +9,12 @@ export const getOldPriceByProductId = (req, res) => {
         return res.status(200).json(data);
     });
 };
+
+export const getOldPriceByProductCode = (req, res) => {
+    const qr = "SELECT o.price, o.input_date FROM old_price o JOIN products p ON p.id = o.product_id AND p.product_code = ? ";
+
+    db.query(qr, [req.params.code], (err, data) => {
+        if (err) return res.status(500).send(err);
+        return res.status(200).json(data);
+    });
+};

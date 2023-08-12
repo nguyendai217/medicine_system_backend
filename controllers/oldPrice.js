@@ -18,3 +18,16 @@ export const getOldPriceByProductCode = (req, res) => {
         return res.status(200).json(data);
     });
 };
+
+export const insertOldPrice = (req, res) => {
+    const qr = "INSERT INTO medicine.old_price(product_id, price, input_date) values (?) ";
+    const values = [
+        req.body.product_id,
+        req.body.price,
+        new Date()
+    ];
+    db.query(qr, [values], (err, data) => {
+        if (err) return res.status(500).json(err);
+        return res.status(201).json("Thêm mới thành công.");
+    });
+};

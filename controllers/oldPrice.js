@@ -19,7 +19,7 @@ export const getOldPriceByProductCode = (req, res) => {
     });
 };
 
-export const insertOldPrice = (req, res) => {
+export const addOldPrice = (req, res) => {
     const qr = "INSERT INTO medicine.old_price(product_id, price, input_date) values (?) ";
     const values = [
         req.body.product_id,

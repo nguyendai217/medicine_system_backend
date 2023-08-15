@@ -10,6 +10,7 @@ import orderRoutes from "./routes/order.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import multer from "multer";
+import { db } from "./db.js";
 import dotenv from 'dotenv';
 dotenv.config()
 
@@ -20,7 +21,6 @@ app.use(cors({
   origin: '*',
   methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH']
 }));
-
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/posts", postRoutes);
@@ -33,6 +33,15 @@ app.use("/api/order", orderRoutes);
 app.listen(process.env.PORT, () => {
   console.log("MyApp connected, running on port", process.env.PORT);
 });
+
+
+app.get('/api/check_connect_db', (req, res) => {
+  var sql = "SELECT * FROM medicine.units";
+  db.query(sql, function (err, results) {
+    if (err) throw err;
+    return res.status(200).json('connected');
+  });
+})
 
 // const storage = multer.diskStorage({
 //   destination: function (req, file, cb) {

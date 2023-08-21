@@ -9,7 +9,6 @@ import oldPriceRoutes from "./routes/oldPrice.js";
 import orderRoutes from "./routes/order.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import multer from "multer";
 import { db } from "./db.js";
 import dotenv from 'dotenv';
 dotenv.config()
@@ -42,20 +41,4 @@ app.get('/api/check_connect_db', (req, res) => {
     return res.status(200).json('connected');
   });
 })
-
-// const storage = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//     cb(null, "../client/public/upload");
-//   },
-//   filename: function (req, file, cb) {
-//     cb(null, Date.now() + file.originalname);
-//   },
-// });
-
-// const upload = multer({ storage });
-
-// app.post("/api/upload", upload.single("file"), function (req, res) {
-//   const file = req.file;
-//   res.status(200).json(file.filename);
-// });
 
